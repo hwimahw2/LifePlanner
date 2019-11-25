@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="41a8bd21-25c4-4baf-8377-f160d37bf7e8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Journal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Start.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../RR/IslandCountSpringMVC2/.idea/vcs.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../WebProject/.idea/libraries/jsp_api.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../WebProject/.idea/libraries/servlet_api.xml" afterDir="false" />
@@ -32,10 +30,8 @@
       <change beforePath="$PROJECT_DIR$/../GradleProject/out/production/GradleProject/main/java/ru/ncd/Matrix.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../GradleProject/src/main/java/ru/ncd/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/../GradleProject/src/main/java/ru/ncd/Graph.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../GradleProject/src/test/java/ru/ncd/MainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../GradleProject/src/test/java/ru/ncd/MainTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/DayPlan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DayPlan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Selector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Selector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../PROJECT/.idea/checkstyle-idea.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../PROJECT/.idea/encodings.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../PROJECT/.idea/misc.xml" beforeDir="false" />
@@ -89,11 +85,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/DayPlan.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="17" column="44" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
+            <state relative-caret-position="202">
+              <caret line="29" column="16" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#201#202#0" expanded="true" />
@@ -119,8 +115,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Selector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="7" column="5" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
+            <state relative-caret-position="184">
+              <caret line="57" column="33" selection-start-line="57" selection-start-column="33" selection-end-line="57" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -159,11 +155,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/rt.jar!/java/util/Map.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-134">
-              <caret line="35" column="33" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="33" />
+            <state relative-caret-position="107">
+              <caret line="35" column="17" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -180,6 +176,8 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>get</find>
+      <find>entrySet</find>
+      <find>Entry</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -190,8 +188,8 @@
       <list>
         <option value="$PROJECT_DIR$/src/main/java/Journal.java" />
         <option value="$PROJECT_DIR$/src/main/java/Start.java" />
-        <option value="$PROJECT_DIR$/src/main/java/DayPlan.java" />
         <option value="$PROJECT_DIR$/src/main/java/Selector.java" />
+        <option value="$PROJECT_DIR$/src/main/java/DayPlan.java" />
       </list>
     </option>
   </component>
@@ -305,12 +303,12 @@
       <updated>1574254557021</updated>
       <workItem from="1574254561603" duration="4779000" />
       <workItem from="1574315349836" duration="13342000" />
-      <workItem from="1574662810951" duration="7127000" />
+      <workItem from="1574662810951" duration="9546000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25248000" />
+    <option name="totallyTimeSpent" value="27667000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -335,13 +333,13 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.081128746" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.55202824" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.28395063" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.329806" />
       <window_info anchor="bottom" id="Build" order="7" visible="true" weight="0.329806" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.18342152" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.2345679" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Java Enterprise" order="11" />
@@ -382,29 +380,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Start.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/DayPlan.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="17" column="44" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#201#202#0" expanded="true" />
-            <element signature="e#254#255#0" expanded="true" />
-            <element signature="e#294#295#0" expanded="true" />
-            <element signature="e#326#327#0" expanded="true" />
-            <element signature="e#326#327#0" expanded="true" />
-            <element signature="e#368#369#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/rt.jar!/java/util/HashMap.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="172">
@@ -432,18 +407,41 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Selector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="5" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
+        <state relative-caret-position="184">
+          <caret line="57" column="33" selection-start-line="57" selection-start-column="33" selection-end-line="57" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Start.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
     <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/rt.jar!/java/util/Map.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-134">
-          <caret line="35" column="33" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="33" />
+        <state relative-caret-position="107">
+          <caret line="35" column="17" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/DayPlan.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="29" column="16" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#201#202#0" expanded="true" />
+            <element signature="e#254#255#0" expanded="true" />
+            <element signature="e#294#295#0" expanded="true" />
+            <element signature="e#326#327#0" expanded="true" />
+            <element signature="e#326#327#0" expanded="true" />
+            <element signature="e#368#369#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

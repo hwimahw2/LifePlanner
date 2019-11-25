@@ -24,9 +24,11 @@ public class DayPlan {
     }
 
     public void printDayPlan(){
-        System.out.println(date);
-        for(int i = 0; i < fieldSubjectAndPlan.size(); i++){
-            System.out.println(fieldSubjectAndPlan.get(i));
+        for(Map.Entry<String, Map<String, String>> entry:fieldSubjectAndPlan.entrySet()){
+            System.out.println(entry.getKey());
+            for(Map.Entry<String, String> innerEntry:entry.getValue().entrySet()){
+                System.out.println(innerEntry.getKey() + " " + innerEntry.getValue());
+            }
         }
     }
 }
