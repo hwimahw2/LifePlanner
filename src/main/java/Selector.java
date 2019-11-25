@@ -25,21 +25,31 @@ public class Selector {
         subjectAndPlan = new HashMap<>();
         switch(choice){
             case(1):{
+                DayPlan dayPlan = new DayPlan();
+                Map<String, String> subjectAndPlan = null;
                 String date = scanner.nextLine();
+                dayPlan.setDate(date);
                 while(true){
+                    System.out.println("Введите направление");
                     String field = scanner.nextLine();
-                    while(true) {
+                    subjectAndPlan = new HashMap<>();
+                    while(true){
+                        System.out.println("Чем именно займетесь сегодня?");
                         in = scanner.nextLine();
                         if(in.indexOf('/') != -1){
+                            if(in.length() == 1){
+                                break;
+                            }
                             flag = 1;
                             in.replace("/", "");
                         }
                         String[] affairs = in.split(":");
-                        subjectAndPlan.put(affairs[1], affairs[2]);
+                        subjectAndPlan.put(affairs[0], affairs[1]);
                         if(flag == 1){
                             break;
                         }
                     }
+                    dayPlan.addFieldSubjectPlan(field, subjectAndPlan);
 
                    if(in.indexOf('/') != -1){
                        flag = 1;
@@ -49,10 +59,10 @@ public class Selector {
                        break;
                    }
                }
-                dayPlan.buildDayPlan(date, , subjectAndPlan);
+                dayPlan.printDayPlan();
             }
         }
-        dayPlan.printDayPlan();
+
     }
 
 }

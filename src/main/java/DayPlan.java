@@ -11,12 +11,15 @@ public class DayPlan {
         fieldSubjectAndPlan = new HashMap<>();
     }
 
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     public Map<String, Map<String, String>> getFieldSubjectAndPlan() {
         return fieldSubjectAndPlan;
     }
 
-    public void buildDayPlan(String date, String field, Map<String, String> subjectAndPlan){
-        this.date = date;
+    public void addFieldSubjectPlan(String field, Map<String, String> subjectAndPlan){
         fieldSubjectAndPlan.put(field, subjectAndPlan);
     }
 
