@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MainFields>
+    <MainField name="Study"> FFFF
+        <Field name="Computer Science">
+            <Subject name="Основы программирования"></Subject>
+            <Subject name="Алгоритмы и структуры данных"></Subject>
+        </Field>
+    </MainField>
+    <MainField name="Sport">
+        <Field name="Футбол">
+            <Subject name="ТВМ"></Subject>
+            <Subject name="AAA"></Subject>
+        </Field>
+    </MainField>
+</MainFields>
