@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MainFields>
-    <MainField name="Study"> FFFF
+    <MainField name="Study">
         <Field name="Computer Science">
             <Subject name="Основы программирования"></Subject>
             <Subject name="Алгоритмы и структуры данных"></Subject>

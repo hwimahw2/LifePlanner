@@ -12,7 +12,7 @@ public class Menu {
 
     private void build() {
         menu.add("Сделайте выбор");
-        menu.add("1) Составить LifePlan");
+        menu.add("1) Составление LifePlan");
         menu.add("2) Планирование дня");
 
     }

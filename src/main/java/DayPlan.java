@@ -5,7 +5,8 @@ public class DayPlan {
     private String date;
     private Map<String, Map<String, String>> fieldSubjectAndPlan;
 
-    DayPlan(){
+    DayPlan(String date){
+        this.date = date;
         fieldSubjectAndPlan = new HashMap<>();
     }
 
@@ -29,4 +30,11 @@ public class DayPlan {
             }
         }
     }
+
+    public void build(String Date){
+        fieldSubjectAndPlan = new HashMap();
+
+
+    }
+
 }

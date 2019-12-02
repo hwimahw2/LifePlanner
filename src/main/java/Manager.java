@@ -27,11 +27,12 @@ public class Manager {
 
             }
             case (2): {
-                DayPlan dayPlan = new DayPlan();
                 Map<String, String> subjectAndPlan = null;
+                System.out.println("Дата");
                 String date = scanner.nextLine();
-                dayPlan.setDate(date);
-                while (true) {
+                DayPlan dayPlan = new DayPlan(date);
+
+              /*  while (true) {
                     System.out.println("Направление");
                     String field = scanner.nextLine();
                     subjectAndPlan = new HashMap<>();
@@ -62,7 +63,7 @@ public class Manager {
                     if (flag == 1) {
                         break;
                     }
-                }
+                }*/
                 dayPlan.printDayPlan();
             }
         }
