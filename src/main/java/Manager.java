@@ -1,71 +1,74 @@
+import ru.nsd.Node;
+
 import java.io.InputStreamReader;
 import java.util.*;
 
 public class Manager {
 
     Menu menu = new Menu();
+    LifePlan lifePlan = new LifePlan();
     DayPlan dayPlan;
     Map<String, String> subjectAndPlan;
 
 
 
     public void select() {
-        menu.buildPrintMenu();
-        Scanner scanner = new Scanner(new InputStreamReader(System.in));
-        int choice = scanner.nextInt();
-        String in = null;
-        int flag = 0;
-        dayPlan = new DayPlan();
-        subjectAndPlan = new HashMap<>();
-        switch (choice) {
-            case (1): {
-                int n = scanner.nextInt();
-                int m = scanner.nextInt();
-                //Matrix matrix = new Matrix();
-
-                System.out.println("Основное направление");
-
-            }
-            case (2): {
-                Map<String, String> subjectAndPlan = null;
-                System.out.println("Дата");
-                String date = scanner.nextLine();
-                DayPlan dayPlan = new DayPlan(date);
-
-              /*  while (true) {
-                    System.out.println("Направление");
-                    String field = scanner.nextLine();
-                    subjectAndPlan = new HashMap<>();
-                    if (field.indexOf('/') != -1) {
-                        flag = 1;
-                        if (field.length() == 1) {
-                            break;
-                        }
-                        in.replace("/", "");
-                    }
+        int exit = 0;
+        do {
+            menu.buildPrintMenu();
+            Scanner scanner = new Scanner(new InputStreamReader(System.in));
+            int choice = scanner.nextInt();
+            subjectAndPlan = new HashMap<>();
+            switch (choice) {
+                case (1): {
+                    lifePlan.print();
+                    System.out.println();
+                    break;
+                }
+                case (2): {
+                    lifePlan.print();
+                    System.out.println();
+                    System.out.println("Введите предмет:описание");
+                    String date = scanner.nextLine();
+                    Map<String, String> subjectAndPlan = new HashMap<>();
                     while (true) {
-                        System.out.println("Дисциплина:Уточнение");
-                        in = scanner.nextLine();
-                        if (in.indexOf('/') != -1) {
-                            if (in.length() == 1) {
+                        int flag = 0;
+                        String stringSubjectPlan = scanner.nextLine();
+                        if (stringSubjectPlan.indexOf('/') != -1) {
+                            flag = 1;
+                            if (stringSubjectPlan.length() == 1) {
                                 break;
                             }
-                            flag = 1;
-                            in.replace("/", "");
+                            stringSubjectPlan.replace("/", "");
                         }
-                        String[] affairs = in.split(":");
-                        subjectAndPlan.put(affairs[0], affairs[1]);
+                        String[] split = stringSubjectPlan.split(":");
+                        for(int i = 0; i < split.length; i++){
+                            System.out.println(split[i]);
+                        }
+                        subjectAndPlan.put(split[0], split[1]);
+                        subjectAndPlan = new HashMap<>();
                         if (flag == 1) {
                             break;
                         }
                     }
-                    dayPlan.addFieldSubjectPlan(field, subjectAndPlan);
-                    if (flag == 1) {
-                        break;
+                    System.out.println(12121);
+                    DayPlan dayPlan = new DayPlan(date, subjectAndPlan);
+                    lifePlan.setPlanInLeavesFromDayPlan(subjectAndPlan);
+                    ArrayList<Node> arrayList = lifePlan.getLeaves();
+                    System.out.println(arrayList.size());
+                    for(int i = 0; i < arrayList.size(); i++){
+                        System.out.println(3333);
+                        Node nod = arrayList.get(i);
+                        if(nod.getPlan() != null)
+                            System.out.println(nod.getPlan());
                     }
-                }*/
-                dayPlan.printDayPlan();
+                    break;
+                }
+                case (3): {
+                    exit = 1;
+                    break;
+                }
             }
-        }
+        }while(exit == 0);
     }
 }

@@ -3,38 +3,19 @@ import java.util.*;
 public class DayPlan {
 
     private String date;
-    private Map<String, Map<String, String>> fieldSubjectAndPlan;
+    private Map<String, String> subjectAndPlan;
 
-    DayPlan(String date){
+    DayPlan(String date, Map<String, String> subjectAndPlan){
         this.date = date;
-        fieldSubjectAndPlan = new HashMap<>();
+        this.subjectAndPlan = subjectAndPlan;
     }
 
     public void setDate(String date) {
         this.date = date;
     }
 
-    public Map<String, Map<String, String>> getFieldSubjectAndPlan() {
-        return fieldSubjectAndPlan;
-    }
-
-    public void addFieldSubjectPlan(String field, Map<String, String> subjectAndPlan){
-        fieldSubjectAndPlan.put(field, subjectAndPlan);
-    }
-
-    public void printDayPlan(){
-        for(Map.Entry<String, Map<String, String>> entry:fieldSubjectAndPlan.entrySet()){
-            System.out.println(entry.getKey());
-            for(Map.Entry<String, String> innerEntry:entry.getValue().entrySet()){
-                System.out.println(innerEntry.getKey() + " " + innerEntry.getValue());
-            }
-        }
-    }
-
-    public void build(String Date){
-        fieldSubjectAndPlan = new HashMap();
-
-
+    public Map<String, String> getSubjectAndPlan() {
+        return subjectAndPlan;
     }
 
 }
