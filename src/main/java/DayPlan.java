@@ -17,5 +17,4 @@ public class DayPlan {
     public Map<String, String> getSubjectAndPlan() {
         return subjectAndPlan;
     }
-
 }

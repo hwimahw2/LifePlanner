@@ -1,1 +1,10 @@
-Саморазвитие  Study    Computer Science      Основы программирования      Алгоритмы и структуры данных  Sport    Футбол      ТВМ        aaaaaaaa      AAA
+Саморазвитие
+Study
+Computer Science
+Основы программирования
+bbbbbbbАлгоритмы и структуры данных
+dddddddSport
+Футбол
+AAA
+aaaaaaaaBBB
+cccccc

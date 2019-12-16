@@ -1,14 +1,13 @@
-Саморазвитие  
-Study  
-  
-Computer Science  
-Sport  
-  
-Футбол  
-  
-  
-ТВМ
-  
-  
-  
-  aaaaaaaaaaaaaa
+Саморазвитие
+  Study
+    Computer Science
+      Основы программирования
+        aaaaaaa
+      Алгоритмы и структуры данных
+        bbbbbbbb
+  Sport
+    Футбол
+      AAA
+        aaaaaaa
+      BBB
+        ddddddddddd

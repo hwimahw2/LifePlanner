@@ -8,17 +8,43 @@ public class Manager {
     Menu menu = new Menu();
     LifePlan lifePlan = new LifePlan();
     DayPlan dayPlan;
+    int[] visit;
     Map<String, String> subjectAndPlan;
 
+
+    private void fillVisitArray(DayPlan dayPlan){
+        visit = new int[lifePlan.getQuantityOfNodes()];
+        for(int i = 0; i < lifePlan.getQuantityOfNodes(); i++){
+            visit[i] = 0;
+        }
+        for(Map.Entry<String, String> entry:dayPlan.getSubjectAndPlan().entrySet()){
+            for(int i = 0; i < lifePlan.getLeaves().size(); i++){
+                if(entry.getKey().equals(lifePlan.getLeaves().get(i).getName())){
+                    Node node = lifePlan.getLeaves().get(i);
+                    fillVisitArrayIter(node);
+                }
+            }
+        }
+    }
+
+    private void fillVisitArrayIter(Node node){
+        if(node == null){
+            return;
+        }
+        this.visit[node.getNumber()] = 1;
+        fillVisitArrayIter(node.getParent());
+    }
 
     private void writeToFileDayPlan() throws Exception{
         File file = new File("./src/main/resources/input.txt");
         FileWriter fileWriter = null;
+        String[] gaps = {""};
         BufferedWriter bufferedWriter = null;
         try{
             fileWriter = new FileWriter(file);
             bufferedWriter = new BufferedWriter(fileWriter);
-            write(lifePlan.getRoot(), bufferedWriter, "");
+            Node node = lifePlan.getRoot();
+            write(node, bufferedWriter, "");
         } catch (IOException e) {
             e.printStackTrace();
         }finally{
@@ -29,24 +55,68 @@ public class Manager {
                 e.printStackTrace();
             }
         }
-
-
     }
 
-    private void write(Node root, BufferedWriter bufferedWriter, String gaps) throws Exception{
-        if(!isNodeInLeaveArrayList(root.getName())) {
-            bufferedWriter.write(gaps + root.getName());
-        }else {
-            if (root.getPlan() != null) {
-                bufferedWriter.write(gaps + root.getName() + "\n");
-                bufferedWriter.write(gaps + "  " + root.getPlan() + "\n");
+    private void write(Node node, BufferedWriter bufferedWriter, String gaps) throws Exception{
+        if(node != null && this.visit[node.getNumber()] == 1) {
+            bufferedWriter.write(gaps + node.getName() + "\n");
+            if (node.getPlan() != null) {
+                bufferedWriter.write(gaps + "  " + node.getPlan() + "\n");
             }
+            gaps = gaps + "  ";
         }
-        ArrayList<Node> arrayList = root.getChildren();
-        for(int i = 0; i < arrayList.size(); i++){
-            write(arrayList.get(i), bufferedWriter, gaps + "  "+ "\n");
+        for(int i = 0; i < node.getChildren().size(); i++){
+            write(node.getChildren().get(i), bufferedWriter, gaps);
         }
     }
+
+
+//    private void writeToFileDayPlan() throws Exception{
+//        File file = new File("./src/main/resources/input.txt");
+//        FileWriter fileWriter = null;
+//        String[] gaps = {""};
+//        BufferedWriter bufferedWriter = null;
+//        try{
+//            fileWriter = new FileWriter(file);
+//            bufferedWriter = new BufferedWriter(fileWriter);
+//            ArrayList<Node> leaves = lifePlan.getLeaves();
+//            for(int i = 0; i < leaves.size(); i++){
+//                Node leaf = leaves.get(i);
+//                if(leaf.getPlan() != null){
+//                    write(leaf, leaf, bufferedWriter, gaps, i);
+//                }
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }finally{
+//            try {
+//                bufferedWriter.close();
+//                fileWriter.close();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    }
+
+//    private void write(Node nodeFromUp, Node leaf, BufferedWriter bufferedWriter, String[] gaps, int indexOfNodeFromUp) throws Exception{
+//        if(nodeFromUp.getParent() != null) {
+//            write(nodeFromUp.getParent(), leaf, bufferedWriter, gaps, indexOfNodeFromUp);
+//        }
+//        bufferedWriter.write(gaps[0] + nodeFromUp.getName() + '\n');
+//        if(nodeFromUp == leaf){
+//            int size = lifePlan.getLeaves().size();
+//            int[] visitLeaves = lifePlan.getVisitLeaves();
+//            visitLeaves[indexOfNodeFromUp] = 1;
+//            for(int i = 0; i < size; i++){
+//                Node brother = lifePlan.getLeaves().get(i);
+//                if(nodeFromUp.getParent() == brother.getParent() && visitLeaves[i] == 0){
+//                    visitLeaves[i] = 1;
+//                    bufferedWriter.write(gaps[0] + brother.getName() + '\n');
+//                }
+//            }
+//        }
+//        gaps[0] = gaps[0] + "  ";
+//    }
 
     private boolean isNodeInLeaveArrayList(String name){
         ArrayList<Node> leaves = lifePlan.getLeaves();
@@ -102,13 +172,8 @@ public class Manager {
 //                        System.out.println(entry.getKey() + " " + entry.getValue());
 //                    }
                     DayPlan dayPlan = new DayPlan(date, subjectAndPlan);
-                    lifePlan.setPlanInLeavesFromDayPlan(subjectAndPlan);
-                    ArrayList<Node> arrayList = lifePlan.getLeaves();
-                    for(int i = 0; i < arrayList.size(); i++){
-                        Node nod = arrayList.get(i);
-                        if(nod.getPlan() != null)
-                            System.out.println(nod.getPlan());
-                    }
+                    lifePlan.setPlanInLeavesFromDayPlan(dayPlan.getSubjectAndPlan());
+                    fillVisitArray(dayPlan);
                     writeToFileDayPlan();
                     break;
                 }

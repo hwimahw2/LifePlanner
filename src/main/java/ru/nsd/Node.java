@@ -7,12 +7,32 @@ public class Node {
 
     private ArrayList<Node> children = new ArrayList<>();
 
-    private Node parent;
+    private Node parent = null;
 
     private String plan = null;
 
+    private int number;
+
+    private ArrayList<Node> parents = new ArrayList<>();
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
     public void setName(String name) {
         this.name = name;
+    }
+
+    public ArrayList<Node> getParents() {
+        return parents;
+    }
+
+    public void setParents(ArrayList<Node> parents) {
+        this.parents = parents;
     }
 
     public ArrayList<Node> getChildren() {

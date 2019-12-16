@@ -13,11 +13,19 @@ public class LifePlan {
     LifePlan(){
         buildLifePlan();
         createListLeaves();
+        visitLeaves = new int[leaves.size()];
+        for(int i = 0; i < leaves.size(); i++){
+            visitLeaves[i] = 0;
+        }
     }
 
     private Node root;
 
+    private int quantityOfNodes = 0;
+
     private ArrayList<Node> leaves = new ArrayList<>();
+
+    private int[] visitLeaves;
 
     public ArrayList<Node> getLeaves() {
         return leaves;
@@ -31,10 +39,21 @@ public class LifePlan {
         return root;
     }
 
+    public int[] getVisitLeaves() {
+        return visitLeaves;
+    }
+
+    public int getQuantityOfNodes() {
+        return quantityOfNodes;
+    }
+
+    public void setQuantityOfNodes(int quantityOfNodes) {
+        this.quantityOfNodes = quantityOfNodes;
+    }
+
     public void print(){
         int[] number = {1};
         printIter(this.getRoot(), "", number);
-
     }
 
     private void printIter(Node root, String gap, int[] number){
@@ -51,10 +70,11 @@ public class LifePlan {
     }
 
     public void buildLifePlan(){
-        buildLifePlanIter(addRoot(), this.getRoot());
+        int[] number = {1};
+        buildLifePlanIter(addRoot(), this.getRoot(), number);
     }
 
-    public void buildLifePlanIter(org.w3c.dom.Node xmlRoot, Node root){
+    public void buildLifePlanIter(org.w3c.dom.Node xmlRoot, Node root, int[] number){
         if(xmlRoot.hasChildNodes()){
             NodeList children = xmlRoot.getChildNodes();
             for (int i = 0; i < children.getLength(); i++) {
@@ -63,7 +83,10 @@ public class LifePlan {
                     child.setParent(root);
                     child.setName(children.item(i).getAttributes().getNamedItem("name").getNodeValue());
                     root.getChildren().add(child);
-                    buildLifePlanIter(children.item(i), child);
+                    child.setNumber(number[0]);
+                    number[0] += 1;
+                    quantityOfNodes++;
+                    buildLifePlanIter(children.item(i), child, number);
                 }
             }
         }
@@ -88,6 +111,8 @@ public class LifePlan {
             this.setRoot(new Node());
             this.getRoot().setParent(null);
             this.getRoot().setName(root.getAttributes().getNamedItem("name").getNodeValue());
+            this.getRoot().setNumber(0);
+            quantityOfNodes++;
         }catch(Exception e){
 
         }
@@ -121,4 +146,13 @@ public class LifePlan {
             }
         }
     }
+
+    public void addAllParentsToNode(Node node, Node parent){
+        if(node.getParent() == null){
+            return;
+        }
+        node.getParents().add(parent);
+        addAllParentsToNode(node, parent.getParent());
+    }
+
 }
