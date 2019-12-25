@@ -1,3 +1,5 @@
+package ru.nsd;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 
@@ -5,8 +7,6 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.util.ArrayList;
 import java.util.Map;
-
-import ru.nsd.Node;
 
 public class LifePlan {
 

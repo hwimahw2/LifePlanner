@@ -1,3 +1,5 @@
+package ru.nsd;
+
 import java.util.*;
 
 public class DayPlan {
@@ -10,8 +12,8 @@ public class DayPlan {
         this.subjectAndPlan = subjectAndPlan;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public String getDate() {
+        return date;
     }
 
     public Map<String, String> getSubjectAndPlan() {

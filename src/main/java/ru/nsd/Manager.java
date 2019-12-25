@@ -1,4 +1,4 @@
-import ru.nsd.Node;
+package ru.nsd;
 
 import java.io.*;
 import java.util.*;
@@ -7,13 +7,10 @@ public class Manager {
 
     Menu menu = new Menu();
     LifePlan lifePlan = new LifePlan();
-    DayPlan dayPlan;
-    int[] visit;
-    Map<String, String> subjectAndPlan;
+    int[] visit = new int[lifePlan.getQuantityOfNodes()];
 
 
     private void fillVisitArray(DayPlan dayPlan){
-        visit = new int[lifePlan.getQuantityOfNodes()];
         for(int i = 0; i < lifePlan.getQuantityOfNodes(); i++){
             visit[i] = 0;
         }
@@ -35,15 +32,16 @@ public class Manager {
         fillVisitArrayIter(node.getParent());
     }
 
-    private void writeToFileDayPlan() throws Exception{
+    private void writeToFileDayPlan(DayPlan dayPlan) throws Exception{
         File file = new File("./src/main/resources/input.txt");
         FileWriter fileWriter = null;
-        String[] gaps = {""};
         BufferedWriter bufferedWriter = null;
         try{
-            fileWriter = new FileWriter(file);
+            fileWriter = new FileWriter(file, true);
             bufferedWriter = new BufferedWriter(fileWriter);
             Node node = lifePlan.getRoot();
+            bufferedWriter.write("-----------------------------------------------------------\n");
+            bufferedWriter.write(dayPlan.getDate() + "\n");
             write(node, bufferedWriter, "");
         } catch (IOException e) {
             e.printStackTrace();
@@ -70,72 +68,12 @@ public class Manager {
         }
     }
 
-
-//    private void writeToFileDayPlan() throws Exception{
-//        File file = new File("./src/main/resources/input.txt");
-//        FileWriter fileWriter = null;
-//        String[] gaps = {""};
-//        BufferedWriter bufferedWriter = null;
-//        try{
-//            fileWriter = new FileWriter(file);
-//            bufferedWriter = new BufferedWriter(fileWriter);
-//            ArrayList<Node> leaves = lifePlan.getLeaves();
-//            for(int i = 0; i < leaves.size(); i++){
-//                Node leaf = leaves.get(i);
-//                if(leaf.getPlan() != null){
-//                    write(leaf, leaf, bufferedWriter, gaps, i);
-//                }
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }finally{
-//            try {
-//                bufferedWriter.close();
-//                fileWriter.close();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//    }
-
-//    private void write(Node nodeFromUp, Node leaf, BufferedWriter bufferedWriter, String[] gaps, int indexOfNodeFromUp) throws Exception{
-//        if(nodeFromUp.getParent() != null) {
-//            write(nodeFromUp.getParent(), leaf, bufferedWriter, gaps, indexOfNodeFromUp);
-//        }
-//        bufferedWriter.write(gaps[0] + nodeFromUp.getName() + '\n');
-//        if(nodeFromUp == leaf){
-//            int size = lifePlan.getLeaves().size();
-//            int[] visitLeaves = lifePlan.getVisitLeaves();
-//            visitLeaves[indexOfNodeFromUp] = 1;
-//            for(int i = 0; i < size; i++){
-//                Node brother = lifePlan.getLeaves().get(i);
-//                if(nodeFromUp.getParent() == brother.getParent() && visitLeaves[i] == 0){
-//                    visitLeaves[i] = 1;
-//                    bufferedWriter.write(gaps[0] + brother.getName() + '\n');
-//                }
-//            }
-//        }
-//        gaps[0] = gaps[0] + "  ";
-//    }
-
-    private boolean isNodeInLeaveArrayList(String name){
-        ArrayList<Node> leaves = lifePlan.getLeaves();
-        for(int i = 0; i < leaves.size(); i++){
-            if(leaves.get(i).getName().equals(name)){
-                return true;
-            }
-        }
-        return false;
-    }
-
-
     public void select() throws Exception{
         int exit = 0;
         do {
             menu.buildPrintMenu();
             Scanner scanner = new Scanner(new InputStreamReader(System.in));
             int choice = scanner.nextInt();
-            subjectAndPlan = new HashMap<>();
             switch (choice) {
                 case (1): {
                     lifePlan.print();
@@ -145,8 +83,10 @@ public class Manager {
                 case (2): {
                     lifePlan.print();
                     System.out.println();
-                    System.out.println("Введите предмет:описание");
+                    System.out.println("Дата");
+                    scanner.nextLine();
                     String date = scanner.nextLine();
+                    System.out.println("Введите предмет:описание");
                     Map<String, String> subjectAndPlan = new HashMap<>();
                     while (true) {
                         int flag = 0;
@@ -159,22 +99,15 @@ public class Manager {
                             stringSubjectPlan = stringSubjectPlan.replace("/", "");
                         }
                         String[] split = stringSubjectPlan.split(":");
-                        for(int i = 0; i < split.length; i++){
-                            System.out.println(split[i]);
-                        }
                         subjectAndPlan.put(split[0], split[1]);
-                  //      subjectAndPlan = new HashMap<>();
                         if (flag == 1) {
                             break;
                         }
                     }
-//                    for(Map.Entry<String, String> entry: subjectAndPlan.entrySet()){
-//                        System.out.println(entry.getKey() + " " + entry.getValue());
-//                    }
                     DayPlan dayPlan = new DayPlan(date, subjectAndPlan);
                     lifePlan.setPlanInLeavesFromDayPlan(dayPlan.getSubjectAndPlan());
                     fillVisitArray(dayPlan);
-                    writeToFileDayPlan();
+                    writeToFileDayPlan(dayPlan);
                     break;
                 }
                 case (3): {

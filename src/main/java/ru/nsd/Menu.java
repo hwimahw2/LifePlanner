@@ -1,5 +1,4 @@
-
-import ru.nsd.Node;
+package ru.nsd;
 
 import java.util.ArrayList;
 import java.util.List;
