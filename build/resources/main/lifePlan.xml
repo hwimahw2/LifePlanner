@@ -12,4 +12,5 @@
             <Subject name="BBB"></Subject>
         </Field>
     </MainField>
+    <MainField name="Прочее"></MainField>
 </MainFields>

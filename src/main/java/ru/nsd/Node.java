@@ -1,7 +1,7 @@
 package ru.nsd;
 import java.util.ArrayList;
 
-public class Node {
+ class Node {
 
     private String name;
 

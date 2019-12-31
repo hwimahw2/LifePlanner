@@ -8,6 +8,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import java.util.ArrayList;
 import java.util.Map;
 
+
 public class LifePlan {
 
     LifePlan(){
@@ -27,6 +28,8 @@ public class LifePlan {
 
     private int[] visitLeaves;
 
+    private ArrayList<String> otherAffairs = new ArrayList<>();
+
     public ArrayList<Node> getLeaves() {
         return leaves;
     }
@@ -37,6 +40,14 @@ public class LifePlan {
 
     public Node getRoot() {
         return root;
+    }
+
+    public ArrayList<String> getOtherAffairs() {
+        return otherAffairs ;
+    }
+
+    public void setOtherAffairs(ArrayList<String> other) {
+        this.otherAffairs = otherAffairs;
     }
 
     public int[] getVisitLeaves() {
@@ -57,7 +68,7 @@ public class LifePlan {
     }
 
     private void printIter(Node root, String gap, int[] number){
-        if(root.getChildren().size() == 0){
+        if(root.getChildren().size() == 0 && !root.getName().equals("Прочее")){
             System.out.println(gap + number[0] + ")"+ root.getName());
             number[0]++;
         }else {
@@ -146,13 +157,4 @@ public class LifePlan {
             }
         }
     }
-
-    public void addAllParentsToNode(Node node, Node parent){
-        if(node.getParent() == null){
-            return;
-        }
-        node.getParents().add(parent);
-        addAllParentsToNode(node, parent.getParent());
-    }
-
 }

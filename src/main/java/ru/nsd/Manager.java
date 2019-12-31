@@ -14,9 +14,12 @@ public class Manager {
         for(int i = 0; i < lifePlan.getQuantityOfNodes(); i++){
             visit[i] = 0;
         }
-        for(Map.Entry<String, String> entry:dayPlan.getSubjectAndPlan().entrySet()){
-            for(int i = 0; i < lifePlan.getLeaves().size(); i++){
-                if(entry.getKey().equals(lifePlan.getLeaves().get(i).getName())){
+        for (int i = 0; i < lifePlan.getLeaves().size(); i++) {
+            if (lifePlan.getLeaves().get(i).getName().equals("Прочее") && lifePlan.getOtherAffairs().size() != 0) {
+                this.visit[lifePlan.getLeaves().get(i).getNumber()] = 1;
+            }
+            for (Map.Entry<String, String> entry : dayPlan.getSubjectAndPlan().entrySet()) {
+                if (entry.getKey().equals(lifePlan.getLeaves().get(i).getName())) {
                     Node node = lifePlan.getLeaves().get(i);
                     fillVisitArrayIter(node);
                 }
@@ -58,6 +61,12 @@ public class Manager {
     private void write(Node node, BufferedWriter bufferedWriter, String gaps) throws Exception{
         if(node != null && this.visit[node.getNumber()] == 1) {
             bufferedWriter.write(gaps + node.getName() + "\n");
+            if(node.getName().equals("Прочее")){
+                ArrayList<String> otherAffairs = lifePlan.getOtherAffairs();
+                for(int i = 0; i < otherAffairs.size(); i++){
+                    bufferedWriter.write(gaps + "  " + otherAffairs.get(i) + "\n");
+                }
+            }
             if (node.getPlan() != null) {
                 bufferedWriter.write(gaps + "  " + node.getPlan() + "\n");
             }
@@ -97,6 +106,14 @@ public class Manager {
                                 break;
                             }
                             stringSubjectPlan = stringSubjectPlan.replace("/", "");
+                        }
+                        if(stringSubjectPlan.indexOf("*") != -1){
+                            stringSubjectPlan = stringSubjectPlan.replace("*", "");
+                            lifePlan.getOtherAffairs().add(stringSubjectPlan);
+                            if(flag == 1){
+                                break;
+                            }
+                            continue;
                         }
                         String[] split = stringSubjectPlan.split(":");
                         subjectAndPlan.put(split[0], split[1]);
